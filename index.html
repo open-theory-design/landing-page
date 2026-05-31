@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Open Theory — Design Strategy for AI</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23080810'/%3E%3Cpolygon points='16,5 26,11 26,21 16,27 6,21 6,11' fill='none' stroke='%23a78bfa' stroke-width='2.2'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%237c5cfc'/%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -56,7 +57,7 @@
     transition: color 0.2s;
     letter-spacing: 0.01em;
   }
-  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover, .nav-links a.active { color: var(--text); }
   .nav-cta {
     font-size: 0.85rem !important;
     color: var(--text) !important;
@@ -382,11 +383,12 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">Open<span>Theory</span></a>
+  <a href="index.html" class="nav-logo">Open<span>Theory</span></a>
   <div class="nav-links">
-    <a href="#services">Services</a>
-    <a href="#how">Approach</a>
-    <a href="#contact" class="nav-cta">Work with us</a>
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html" class="nav-cta">Work with us</a>
   </div>
 </nav>
 
@@ -398,8 +400,8 @@
     <h1>Where Strategy<br>Meets <em>Intelligence</em></h1>
     <p class="hero-sub">Open Theory is a design strategy agency built for the AI era. We help AI companies think clearly, design with intent, and build products people actually understand.</p>
     <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Start a conversation</a>
-      <a href="#services" class="btn-ghost">What we do</a>
+      <a href="contact.html" class="btn-primary">Start a conversation</a>
+      <a href="services.html" class="btn-ghost">What we do</a>
     </div>
   </div>
 </section>
@@ -410,39 +412,42 @@
     <div class="services-header">
       <div class="section-label">Services</div>
       <h2 class="section-title">Built for companies<br>building with AI</h2>
-      <p class="section-sub">Three ways we embed into your work — from high-level strategy to hands-on execution.</p>
+      <p class="section-sub">Three ways we embed into your work, from high-level strategy to hands-on execution.</p>
     </div>
     <div class="services-grid">
       <div class="service-card">
         <div class="service-icon">◈</div>
-        <h3>Design Strategy Consulting</h3>
-        <p>We partner with AI companies to shape how their products think, feel, and communicate. From positioning to product principles, we help you build a coherent design vision that scales.</p>
+        <h3>Design Strategy</h3>
+        <p>We clarify what you're building, who it's for, and why it matters. Strategy is the lens we use to make every downstream decision sharper.</p>
         <div class="service-tags">
-          <span class="tag">Product Strategy</span>
-          <span class="tag">Design Systems</span>
+          <span class="tag">Positioning</span>
+          <span class="tag">Product Tenets</span>
           <span class="tag">UX Direction</span>
         </div>
       </div>
       <div class="service-card">
         <div class="service-icon">⬡</div>
-        <h3>Designer Network</h3>
-        <p>Access a curated network of senior designers who understand AI products. We match the right creative talent to your team — embedded, on-demand, or project-based.</p>
+        <h3>Product Design</h3>
+        <p>End-to-end product design for AI-first products, from early concepts to production-ready interfaces. We design with the grain of how AI products actually behave.</p>
         <div class="service-tags">
-          <span class="tag">Embedded Design</span>
-          <span class="tag">Talent Matching</span>
-          <span class="tag">On-demand</span>
+          <span class="tag">Product UI</span>
+          <span class="tag">Design Systems</span>
+          <span class="tag">Interaction</span>
         </div>
       </div>
       <div class="service-card">
         <div class="service-icon">⬟</div>
-        <h3>Internal AI Tooling</h3>
-        <p>We build bespoke AI tools for your internal teams — designed around how your people actually work. Proprietary frameworks, custom interfaces, and systems that compound over time.</p>
+        <h3>AI-First Prototyping</h3>
+        <p>Working, interactive prototypes built with AI-native tooling. We compress weeks of design and engineering into days, letting you test ideas with real users fast.</p>
         <div class="service-tags">
-          <span class="tag">Custom Tooling</span>
-          <span class="tag">Workflow AI</span>
-          <span class="tag">Proprietary Systems</span>
+          <span class="tag">Rapid Prototyping</span>
+          <span class="tag">Concept Validation</span>
+          <span class="tag">Internal Tooling</span>
         </div>
       </div>
+    </div>
+    <div style="text-align: center; margin-top: 3rem;">
+      <a href="services.html" class="btn-ghost">View all services →</a>
     </div>
   </div>
 </section>
@@ -458,14 +463,14 @@
           <span class="step-num">01</span>
           <div>
             <h4>Understand the real problem</h4>
-            <p>We start with deep discovery — into your product, your users, and the assumptions your team holds. Most design problems are strategy problems in disguise.</p>
+            <p>We start with deep discovery into your product, your users, and the assumptions your team holds. Most design problems are strategy problems in disguise.</p>
           </div>
         </div>
         <div class="how-step">
           <span class="step-num">02</span>
           <div>
             <h4>Build a shared design language</h4>
-            <p>We define clear principles, patterns, and frameworks that align your team and guide every decision — from interface choices to product positioning.</p>
+            <p>We define clear principles, patterns, and frameworks that align your team and guide every decision, from interface choices to product positioning.</p>
           </div>
         </div>
         <div class="how-step">
@@ -479,7 +484,7 @@
           <span class="step-num">04</span>
           <div>
             <h4>Leave you stronger</h4>
-            <p>We don't build dependency. Every engagement ends with your team more capable — better systems, sharper thinking, and the tools to keep compounding.</p>
+            <p>We don't build dependency. Every engagement ends with your team more capable: better systems, sharper thinking, and the tools to keep compounding.</p>
           </div>
         </div>
       </div>
@@ -495,8 +500,8 @@
   <div class="container">
     <div class="contact-box">
       <h2>Let's build something worth building.</h2>
-      <p>Whether you're an AI company finding your design footing, or a team that needs the right people fast — we'd love to hear what you're working on.</p>
-      <a href="mailto:hello@opentheoryai.com" class="btn-primary">hello@opentheoryai.com</a>
+      <p>Whether you're an AI company finding your design footing, or a team that needs the right people fast, we'd love to hear what you're working on.</p>
+      <a href="contact.html" class="btn-primary">Get in touch</a>
     </div>
   </div>
 </section>

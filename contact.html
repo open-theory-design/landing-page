@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Open Theory</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23080810'/%3E%3Cpolygon points='16,5 26,11 26,21 16,27 6,21 6,11' fill='none' stroke='%23a78bfa' stroke-width='2.2'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%237c5cfc'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #080810;
+    --surface: #0f0f1a;
+    --border: rgba(255,255,255,0.07);
+    --border-strong: rgba(255,255,255,0.15);
+    --accent: #7c5cfc;
+    --accent2: #a78bfa;
+    --text: #f0eff8;
+    --muted: #7b7a8e;
+    --error: #ef4444;
+    --success: #34d399;
+    --font-head: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 2.5rem;
+    background: rgba(8,8,16,0.7);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--font-head); font-size: 1.1rem; font-weight: 600;
+    letter-spacing: -0.02em; color: var(--text); text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent2); }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-links a {
+    font-size: 0.85rem; color: var(--muted); text-decoration: none;
+    transition: color 0.2s; letter-spacing: 0.01em;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--text); }
+  .nav-cta {
+    font-size: 0.85rem !important; color: var(--text) !important;
+    border: 1px solid rgba(124,92,252,0.5);
+    padding: 0.5rem 1.1rem; border-radius: 6px;
+    background: rgba(124,92,252,0.1); transition: all 0.2s !important;
+  }
+  .nav-cta.active { background: rgba(124,92,252,0.25) !important; border-color: var(--accent) !important; }
+
+  /* MAIN */
+  main {
+    flex: 1;
+    padding: 9rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  main::before {
+    content: '';
+    position: absolute;
+    top: 20%; left: 50%;
+    transform: translateX(-50%);
+    width: 700px; height: 400px;
+    background: radial-gradient(ellipse, rgba(124,92,252,0.12), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .contact-wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  /* HEADER */
+  .contact-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+  .page-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  .contact-header h1 {
+    font-family: var(--font-head);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.25rem;
+  }
+  .contact-header h1 em {
+    font-style: normal;
+    background: linear-gradient(135deg, #a78bfa, #7c5cfc, #38bdf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .contact-header p {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 520px;
+    margin: 0 auto;
+    font-weight: 300;
+  }
+  .hero-cue {
+    text-align: center;
+    font-family: var(--font-head);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--accent2);
+    letter-spacing: 0.01em;
+    margin: -1.5rem auto 2.5rem;
+  }
+
+  /* FORM */
+  .contact-form {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-form::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(167,139,250,0.5), transparent);
+  }
+  .field-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+  }
+  .field-group:last-of-type { margin-bottom: 2rem; }
+  label {
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+  }
+  input, textarea {
+    background: rgba(0,0,0,0.25);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    width: 100%;
+    resize: none;
+  }
+  textarea {
+    min-height: 140px;
+    line-height: 1.6;
+    font-family: var(--font-body);
+  }
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: rgba(124,92,252,0.6);
+    background: rgba(124,92,252,0.04);
+    box-shadow: 0 0 0 4px rgba(124,92,252,0.08);
+  }
+  input::placeholder, textarea::placeholder {
+    color: #4a4a5a;
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 1rem 2rem;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: var(--font-body);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .btn-submit:hover:not(:disabled) {
+    background: #6d4de8;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 30px rgba(124,92,252,0.35);
+  }
+  .btn-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  .btn-submit .arrow { transition: transform 0.2s; }
+  .btn-submit:hover:not(:disabled) .arrow { transform: translateX(3px); }
+
+  /* FORM STATE MESSAGES */
+  .form-message {
+    margin-top: 1.25rem;
+    padding: 0.85rem 1rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    display: none;
+    line-height: 1.5;
+  }
+  .form-message.error {
+    background: rgba(239,68,68,0.08);
+    border: 1px solid rgba(239,68,68,0.3);
+    color: #fca5a5;
+    display: block;
+  }
+
+  /* SUCCESS STATE */
+  .success-state {
+    text-align: center;
+    padding: 3rem 2rem;
+    display: none;
+  }
+  .success-state.show { display: block; }
+  .contact-form.hide { display: none; }
+  .success-icon {
+    width: 64px; height: 64px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    background: rgba(52,211,153,0.1);
+    border: 1px solid rgba(52,211,153,0.3);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--success);
+    font-size: 1.5rem;
+  }
+  .success-state h2 {
+    font-family: var(--font-head);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+  }
+  .success-state p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 2.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+  }
+  .footer-logo {
+    font-family: var(--font-head);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .footer-logo span { color: var(--accent2); }
+  footer p { font-size: 0.78rem; color: var(--muted); }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.25rem; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    main { padding: 7rem 1.5rem 3rem; }
+    .contact-form { padding: 1.75rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Open<span>Theory</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html" class="nav-cta active">Work with us</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main>
+  <div class="contact-wrap">
+    <div class="contact-header">
+      <div class="page-label">Contact</div>
+      <h1>Let's build something<br><em>worth building</em></h1>
+      <p>Whether you're shaping an AI product from scratch or stuck on the next step, make your move. We respond within 48 hours.</p>
+    </div>
+
+    <p class="hero-cue">Make your move.</p>
+
+    <form class="contact-form" id="contactForm" action="https://formspree.io/f/meedwnry" method="POST">
+      <div class="field-group">
+        <label for="name">Your name</label>
+        <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+      </div>
+      <div class="field-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="jane@company.com" required>
+      </div>
+      <div class="field-group">
+        <label for="message">What are you working on?</label>
+        <textarea id="message" name="message" placeholder="Tell us about your project, your team, and what kind of help you're looking for..." required></textarea>
+      </div>
+      <button type="submit" class="btn-submit" id="submitBtn">
+        <span id="btnText">Send message</span>
+        <span class="arrow">→</span>
+      </button>
+      <div class="form-message" id="formError"></div>
+    </form>
+
+    <div class="success-state" id="successState">
+      <div class="success-icon">✓</div>
+      <h2>Message received</h2>
+      <p>Thanks for reaching out. The next move's ours. We'll be in touch within 48 hours. In the meantime, feel free to explore our <a href="services.html" style="color: var(--accent2);">services</a> or <a href="about.html" style="color: var(--accent2);">approach</a>.</p>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <a href="index.html" class="footer-logo">Open<span>Theory</span></a>
+  <p>© 2025 Open Theory. All rights reserved.</p>
+</footer>
+
+<script>
+  const form = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const btnText = document.getElementById('btnText');
+  const formError = document.getElementById('formError');
+  const successState = document.getElementById('successState');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    formError.style.display = 'none';
+    submitBtn.disabled = true;
+    btnText.textContent = 'Sending...';
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        form.classList.add('hide');
+        successState.classList.add('show');
+      } else {
+        const data = await response.json();
+        throw new Error(data.errors?.map(e => e.message).join(', ') || 'Something went wrong');
+      }
+    } catch (err) {
+      formError.textContent = 'Sorry — something went wrong. Please try again or email us directly.';
+      formError.classList.add('error');
+      formError.style.display = 'block';
+      submitBtn.disabled = false;
+      btnText.textContent = 'Send message';
+    }
+  });
+</script>
+</body>
+</html>
